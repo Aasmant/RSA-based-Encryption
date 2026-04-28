@@ -1,52 +1,117 @@
-# RSA-Based File Encryption Service - Secure SDLC Case Study
+# 🔐 RSA-Based Encryption System 
 
+This project implements the **RSA (Rivest–Shamir–Adleman) algorithm**, a widely used public-key cryptographic system for secure data transmission. It allows users to generate keys, encrypt messages, and decrypt ciphertext using Python.
 
-## Overview
+## 🚀 Features
 
-This repository demonstrates a comprehensive implementation of Secure Software Development Lifecycle (SSDLC) principles through an RSA-based file encryption service. The project serves as showcasing security requirements engineering, threat modeling, secure architecture design, and comprehensive security testing throughout all phases of the development lifecycle.
+* 🔑 RSA key pair generation (Public & Private keys)
+* 🔒 Encrypt plaintext messages
+* 🔓 Decrypt ciphertext back to original message
+* 📏 Customizable key size (for security level)
+* ⚡ Lightweight implementation using core Python
 
-The implementation features RSA asymmetric encryption,RESTful API design, and includes intentional security vulnerabilities with corresponding detection tests to demonstrate effective security testing methodologies.
+## 🛠️ Technologies Used
 
----
+* Python 3
+* Built-in modules:
 
-## Quick Start (Two-Terminal Setup)
+  * `random`
+  * `math`
 
-### Terminal 1: Server Side
+## 📦 Project Structure
 
-Start the Spring Boot application:
-
-```bash
-# Navigate to project root
-cd /path/to/rsa-based-encryption-master
-
-# Build the project (first time only)
-mvn clean install
-
-# Run the Spring Boot server
-mvn spring-boot:run
+```
+rsa-based-encryption/
+│── rsa.py                # Core RSA algorithm implementation
+│── key_generation.py     # Handles key creation
+│── encrypt.py            # Encryption logic
+│── decrypt.py            # Decryption logic
+│── main.py               # Entry point / demo usage
 ```
 
-**Output**:
+*(Note: Adjust filenames if your repo structure is different.)*
+
+## ⚙️ Installation & Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/rsa-based-encryption.git
+   cd rsa-based-encryption
+   ```
+
+2. Run the project:
+
+   ```bash
+   python main.py
+   ```
+
+## 🧪 Usage
+
+### 1️⃣ Generate Keys
+
+* Run the key generation script or function
+* It will produce:
+
+  * Public Key `(e, n)`
+  * Private Key `(d, n)`
+
+### 2️⃣ Encrypt Message
+
+```python
+ciphertext = encrypt(message, public_key)
 ```
-Server running on: http://localhost:5000
+
+### 3️⃣ Decrypt Message
+
+```python
+plaintext = decrypt(ciphertext, private_key)
 ```
 
-The server is now ready to accept requests. Keep this terminal open.
+## 📌 Example
 
----
+```python
+message = "Hello World"
 
-### Terminal 2: Client Side
+public_key, private_key = generate_keys()
 
-In a new terminal, run the Python CLI client:
+encrypted = encrypt(message, public_key)
+print("Encrypted:", encrypted)
 
-```bash
-# Navigate to client directory
-cd /path/to/rsa-based-encryption-master/RSA-JavaSpringboot
-
-# Run the Python client
-python3 client.py
+decrypted = decrypt(encrypted, private_key)
+print("Decrypted:", decrypted)
 ```
 
+## 🔍 How It Works
 
----
+1. Generate two large prime numbers `p` and `q`
+2. Compute:
 
+   * `n = p * q`
+   * `φ(n) = (p-1)(q-1)`
+3. Choose public exponent `e`
+4. Compute private key `d` such that:
+
+   ```
+   d ≡ e⁻¹ mod φ(n)
+   ```
+5. Encryption:
+
+   ```
+   C = M^e mod n
+   ```
+6. Decryption:
+
+   ```
+   M = C^d mod n
+   ```
+
+## ⚠️ Disclaimer
+
+* This implementation is for **educational purposes only**
+* Not secure for real-world production use
+* Does not include padding schemes like OAEP
+
+## 📄 License
+
+This project is open-source and free to use.
