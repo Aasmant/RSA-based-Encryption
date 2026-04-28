@@ -1,0 +1,39 @@
+# Java
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+env/
+venv/
+
+# Databases
+*.db
+*.sqlite
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets/Tokens
+token.json
+*.pem
+*.key
+backend_key
+secret.txt
+secret_b.txt
+test_rsa_service.db
